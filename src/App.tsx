@@ -97,7 +97,7 @@ function App() {
 
             </p>
 
-            <button className="ml-2 border border-slate-900 px-4 rounded-sm" onClick={onSpeakClick}>🗣️</button>
+            <button className="ml-2 px-4 rounded-sm" onClick={onSpeakClick}>🗣️</button>
           </div>
         </div>
 
