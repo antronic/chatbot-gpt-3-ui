@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
+import OpenAiLogo from './assets/OpenAI_Logo.svg'
 import axios from 'axios'
 import { speak } from './azure-speech'
 
@@ -97,7 +97,7 @@ function App() {
 
             </p>
 
-            <button className="ml-2 px-2 py-2 border hover:border-slate-400 hover:bg-slate-400 rounded-md" onClick={onSpeakClick}>😺</button>
+            <button className="ml-2 px-2 py-2 border hover:border-slate-400 hover:bg-slate-400 active:bg-slate-600 rounded-md" onClick={onSpeakClick}>😺</button>
           </div>
         </div>
 
@@ -108,6 +108,16 @@ function App() {
             <button className="bg-fuchsia-800 text-slate-50 text-2xl rounded-md px-4 py-2 mt-2" onClick={onSearchClick}>Ask</button>
           {/* <button className="bg-fuchsia-800 text-slate-50 rounded-md px-4 py-2 mt-2" onClick={onSpeakClick}>speak</button> */}
           </div>
+        </div>
+
+        <div className="mt-12 inline-flex justify-center items-center">
+          <p className="inline-block">Powered by</p>
+          <a href="https://azure.microsoft.com/en-us/products/cognitive-services/openai-service">
+            <img src={OpenAiLogo} className="h-6 ml-4 inline-block fill-white" alt="" />
+          </a>
+          <a href="https://language.cognitive.azure.com/" className="ml-2 font-semibold text-slate-100 inline-block hover:underline">
+            <img src="./images/MS-Azure_logo_horiz_white_rgb.png" className="h-12 ml-0 inline-block" alt="" />
+          </a>
         </div>
       </div>
     </div>
