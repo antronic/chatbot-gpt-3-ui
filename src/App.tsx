@@ -65,6 +65,27 @@ function App() {
   //   typeWriter()
   // }
 
+  function promptMe() {
+    const prompt = window.prompt('Enter your prompt')
+
+    switch (prompt) {
+      case 'apiHost':
+        const apiHost = window.prompt('Enter your api host')
+        localStorage.setItem('apiHost', apiHost || 'http://127.0.0.1:1234')
+        break
+      case 'speak':
+        const text = window.prompt('Enter your text')
+        speak(text || '')
+        break
+      case 'speak-input':
+        speak(input)
+        break
+      default:
+        window.alert('No command found')
+        break
+    }
+  }
+
   function onSpeakClick() {
     speak(output)
   }
@@ -72,15 +93,17 @@ function App() {
   return (
     <div className="">
       <nav className="px-4 py-2 bg-fuchsia-800/25">
-        <img src="./images/logo-from-dalle.png" className="h-12 inline-block" alt="" />
-        <h1 className="text-2xl font-bold inline-block ml-4">Arrr ... my ... GPT-3</h1>
+        <img src="./images/logo-from-dalle.png" className="h-12 inline-block" alt="" onClick={promptMe} />
+        <h1 className="text-2xl font-bold inline-block ml-4">Arrr ...ummm... my ... GPT-3</h1>
       </nav>
 
       {
         isSearch && (
-          <div className="fixed flex items-center justify-center flex-col bg-black w-full h-full">
+          <div className="fixed flex items-center justify-center flex-col bg-black w-full h-full z-50">
             <div className="zoom">
-              <img src="./images/cat-from-dalle.png" className="spin h-64 inline-block" alt="" />
+              <div className="animate-pulse">
+                <img src="./images/cat-from-dalle.png" className="spin h-64 inline-block" alt="" />
+              </div>
             </div>
             <p className="text-white text-2xl mt-2 text-center">ดิฉันได้รับเรื่องแล้วค่ะ<br/>กำลังประสานงานให้สักครู่นะคะ</p>
           </div>
@@ -90,19 +113,19 @@ function App() {
       <div className="flex flex-col justify-center items-center h-screen mx-auto w-4/5">
 
         <div className="my-2">
-          <img src="./images/cat-from-dalle.png" className="h-32 inline-block" alt="" />
+          <img src="./images/cat-from-dalle.png" className="h-32 inline-block move-in relative cursor-pointer scale-110 hover:scale-125 transition-all" alt="" onClick={onSpeakClick}/>
           <div className="inline-flex items-center ml-4 px-4 py-2 rounded-md bg-slate-50 text-slate-900">
             <p className="text-2xl inline-block">
             {output}
 
             </p>
 
-            <button className="ml-2 px-2 py-2 border hover:border-slate-400 hover:bg-slate-400 active:bg-slate-600 rounded-md" onClick={onSpeakClick}>😺</button>
+            {/* <button className="ml-2 px-2 py-2 border hover:border-slate-400 hover:bg-slate-400 active:bg-slate-600 rounded-md" onClick={onSpeakClick}>😺</button> */}
           </div>
         </div>
 
         <div className="w-full">
-          <textarea rows={3} className="rounded-md w-full text-slate-900 text-2xl px-2 py-2" onChange={(e) => handleInput(e)}></textarea>
+          <textarea rows={3} className="rounded-md w-full text-slate-900 text-2xl px-2 py-2 relative z-10" onChange={(e) => handleInput(e)}></textarea>
           {/* search button */}
           <div className="text-center">
             <button className="bg-fuchsia-800 text-slate-50 text-2xl rounded-md px-4 py-2 mt-2" onClick={onSearchClick}>Ask</button>
