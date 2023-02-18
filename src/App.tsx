@@ -1,12 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import axios from 'axios'
+import { speak } from './azure-speech'
 
 function App() {
   const [input, setInput] = useState('')
   const [output, setOutput] = useState('ถามมาได้เลยจ่ะ')
   const [answer, setAnswer] = useState('')
   const [isSearch, setIsSearch] = useState(false)
+
+  useEffect(() => {
+    if (output !== '') {
+      speak(output)
+    }
+  }, [output])
 
   function handleInput(event: React.ChangeEvent<HTMLTextAreaElement>) {
     setInput(event.target.value)
@@ -58,6 +65,10 @@ function App() {
   //   typeWriter()
   // }
 
+  function onSpeakClick() {
+    speak(output)
+  }
+
   return (
     <div className="">
       <nav className="px-4 py-2 bg-fuchsia-800/25">
@@ -81,9 +92,12 @@ function App() {
         <div className="my-2">
           <img src="./images/cat-from-dalle.png" className="h-32 inline-block" alt="" />
           <div className="inline-block ml-4 px-4 py-2 rounded-md bg-slate-50 text-slate-900">
-            <p className="text-xl">
+            <p className="text-xl inline-block">
             {output}
-          </p>
+
+            </p>
+
+            <button className="ml-2 border border-slate-900 px-4 rounded-sm" onClick={onSpeakClick}>Read</button>
           </div>
         </div>
 
@@ -91,6 +105,7 @@ function App() {
           <textarea rows={3} className="rounded-md w-full text-slate-900 text-xl px-2 py-2" onChange={(e) => handleInput(e)}></textarea>
           {/* search button */}
           <button className="bg-fuchsia-800 text-slate-50 rounded-md px-4 py-2 mt-2" onClick={onSearchClick}>Ask</button>
+          {/* <button className="bg-fuchsia-800 text-slate-50 rounded-md px-4 py-2 mt-2" onClick={onSpeakClick}>speak</button> */}
         </div>
       </div>
     </div>
