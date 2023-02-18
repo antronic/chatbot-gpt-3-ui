@@ -91,21 +91,23 @@ function App() {
 
         <div className="my-2">
           <img src="./images/cat-from-dalle.png" className="h-32 inline-block" alt="" />
-          <div className="inline-block ml-4 px-4 py-2 rounded-md bg-slate-50 text-slate-900">
-            <p className="text-xl inline-block">
+          <div className="inline-flex items-center ml-4 px-4 py-2 rounded-md bg-slate-50 text-slate-900">
+            <p className="text-2xl inline-block">
             {output}
 
             </p>
 
-            <button className="ml-2 px-4 rounded-sm" onClick={onSpeakClick}>🗣️</button>
+            <button className="ml-2 px-2 py-2 border hover:border-slate-400 hover:bg-slate-400 rounded-md" onClick={onSpeakClick}>😺</button>
           </div>
         </div>
 
         <div className="w-full">
-          <textarea rows={3} className="rounded-md w-full text-slate-900 text-xl px-2 py-2" onChange={(e) => handleInput(e)}></textarea>
+          <textarea rows={3} className="rounded-md w-full text-slate-900 text-2xl px-2 py-2" onChange={(e) => handleInput(e)}></textarea>
           {/* search button */}
-          <button className="bg-fuchsia-800 text-slate-50 rounded-md px-4 py-2 mt-2" onClick={onSearchClick}>Ask</button>
+          <div className="text-center">
+            <button className="bg-fuchsia-800 text-slate-50 text-2xl rounded-md px-4 py-2 mt-2" onClick={onSearchClick}>Ask</button>
           {/* <button className="bg-fuchsia-800 text-slate-50 rounded-md px-4 py-2 mt-2" onClick={onSpeakClick}>speak</button> */}
+          </div>
         </div>
       </div>
     </div>
