@@ -24,7 +24,7 @@ function App() {
     setIsSearch(true)
     // query string q
     // Access-Control-Allow-Origin
-    const apiHost = localStorage.getItem('apihost') || 'http://127.0.0.1:1234'
+    const apiHost = localStorage.getItem('apiHost') || 'http://127.0.0.1:1234'
 
     const result = await axios.get(`${apiHost}/message`, {
       params: {
