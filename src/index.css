@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* color-scheme: light dark; */
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #262044;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* animation zoom */
+@keyframes zoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* animation spin */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* repeat 5 times */
+.spin {
+  animation: spin .25s linear;
+  animation-iteration-count: 5;
+}
+
+.zoom {
+  animation: zoom 1s linear;
+  animation-iteration-count: 1;
+}
