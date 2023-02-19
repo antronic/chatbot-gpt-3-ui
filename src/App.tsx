@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import OpenAiLogo from './assets/OpenAI_Logo.svg'
 import axios from 'axios'
+
+import Navbar from './components/Navbar'
 import { speak } from './azure-speech'
 
 function App() {
@@ -22,10 +24,8 @@ function App() {
   async function onSearchClick() {
     playSound()
     setIsSearch(true)
-    // query string q
-    // Access-Control-Allow-Origin
-    const apiHost = localStorage.getItem('apiHost') || 'http://127.0.0.1:1234'
 
+    const apiHost = localStorage.getItem('apiHost') || 'http://127.0.0.1:1234'
     const result = await axios.get(`${apiHost}/message`, {
       params: {
         q: input
@@ -38,8 +38,6 @@ function App() {
 
     setOutput(result?.data?.answer)
     setIsSearch(false)
-    // setTimeout(() => {
-    // }, 3000)
   }
 
   // play sound when search button is clicked
@@ -49,54 +47,13 @@ function App() {
     audio.play()
   }
 
-  // Typing animation
-  // function typing(message: string) {
-  //   let i = 0
-  //   const speed = 50
-  //   const text = message
-  //   const output = document.getElementById('output')
-  //   function typeWriter() {
-  //     if (i < text.length) {
-  //       output.innerHTML += text.charAt(i)
-  //       i++
-  //       setTimeout(typeWriter, speed)
-  //     }
-  //   }
-  //   typeWriter()
-  // }
-
-  function promptMe() {
-    const prompt = window.prompt('Enter your prompt')
-
-    switch (prompt) {
-      case 'apiHost':
-        const apiHost = window.prompt('Enter your api host')
-        localStorage.setItem('apiHost', apiHost || 'http://127.0.0.1:1234')
-        break
-      case 'speak':
-        const text = window.prompt('Enter your text')
-        speak(text || '')
-        break
-      case 'speak-input':
-        speak(input)
-        break
-      default:
-        window.alert('No command found')
-        break
-    }
-  }
-
   function onSpeakClick() {
     speak(output)
   }
 
   return (
     <div className="">
-      <nav className="px-4 py-2 bg-fuchsia-800/25">
-        <img src="./images/logo-from-dalle.png" className="h-12 inline-block" alt="" onClick={promptMe} />
-        <h1 className="text-2xl font-bold inline-block ml-4">Arrr ...ummm... my ... GPT-3</h1>
-      </nav>
-
+      <Navbar/>
       {
         isSearch && (
           <div className="fixed flex items-center justify-center flex-col bg-black w-full h-full z-50">
