@@ -1,4 +1,6 @@
 import { SpeechConfig, SpeechSynthesizer, AudioConfig, SpeakerAudioDestination } from 'microsoft-cognitiveservices-speech-sdk'
+
+const audio = new Audio()
 export async function speak(message: string) {
   // speak out to speaker
   const speechConfig = SpeechConfig.fromSubscription(
@@ -23,8 +25,19 @@ export async function speak(message: string) {
 }
 
 function onSpeechSynthesized(result: any) {
-  const audio = new Audio()
   audio.src = URL.createObjectURL(result.audioData)
   audio.volume = 1.0
   audio.play()
 }
+
+function stopSpeak() {
+  audio.pause()
+  audio.currentTime = 0
+}
+
+// export function useVoice () {
+//   return {
+//     speak,
+//     stopSpeak,
+//   }
+// }

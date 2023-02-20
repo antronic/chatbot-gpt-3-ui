@@ -15,9 +15,11 @@ export default () => {
   const [warnings, setWarnings] = useState<Warning[]>([])
   const [showNotificationList, setShowNotificationList] = useState(false)
 
+  const [trigger, setTrigger] = useState(0)
+
   useEffect(() => {
     prerequisiteCheck()
-  }, [])
+  }, [trigger])
 
   function prerequisiteCheck() {
     const _warnings: Warning[] = []
@@ -29,7 +31,9 @@ export default () => {
           action: () => {
             const apiHost = window.prompt('Enter your api host')
             if (apiHost) {
+              // Trigger state after setting localStorage
               localStorage.setItem('apiHost', apiHost)
+              setTrigger(trigger + 1)
             }
           }
         }
@@ -58,13 +62,17 @@ export default () => {
   }
 
   return (
-    <nav className="px-4 py-2 bg-fuchsia-800/25">
-        <div className="grid grid-cols-2">
-          <div className="col-auto">
-            <img src="./images/logo-from-dalle.png" className="h-12 inline-block" alt="" onClick={promptMe} />
-            <h1 className="text-2xl font-bold inline-block ml-4">Arrr ...ummm... my ... GPT-3</h1>
+    <nav className="px-4 py-2 bg-gradient-to-r from-indigo-900/50 to-blue-900/25 absolute top-0 left-0 w-full shadow-md shadow-black/5">
+        <div className="grid grid-cols-4">
+          <div className="col-span-3">
+            <img src="./images/logo-from-dalle.png" className="h-12 max-sm:h-8 inline-block hover:scale-75 transition-transform" alt="" onClick={promptMe} />
+            <h1 className="text-2xl max-sm:text-xl font-bold inline-block ml-4">Arrr ...ummm... my ... GPT-3</h1>
           </div>
-          <div className="col-auto flex items-center justify-end">
+          <div className="col-span-1 flex items-center justify-end">
+            <a target="_blank" className="hover:bg-black/25 active:bg-black/50 cursor-pointer p-2 rounded-md inline-block" href="https://github.com/antronic/chatbot-gpt-3-ui">
+              <img src="./vectors/Octicons-mark-github.svg" className="h-6 max-sm:h-4" alt=""/>
+            </a>
+
             {
               warnings.length > 0 && (
                 <div className="hover:bg-black/25 active:bg-black/50 cursor-pointer px-1 rounded-md" onClick={() => setShowNotificationList(!showNotificationList)}>
