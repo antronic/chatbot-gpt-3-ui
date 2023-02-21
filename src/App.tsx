@@ -71,7 +71,7 @@ function App() {
         )
       }
 
-      <div className="flex flex-col justify-center items-center h-screen mx-auto w-4/5">
+      <div className="flex flex-col justify-center items-center h-screen mx-auto w-4/5 max-sm:w-full px-2">
 
         {/* Start: Cat box */}
         <div className="my-2">
