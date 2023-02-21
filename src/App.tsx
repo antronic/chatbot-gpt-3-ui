@@ -108,7 +108,7 @@ function App() {
 
         <div className="mt-12">
           <div className="inline-flex justify-center items-center">
-            <p className="inline-block">Powered by</p>
+            <p className="inline-block text-sm">Powered by</p>
             <a href="https://azure.microsoft.com/en-us/products/cognitive-services/openai-service">
               <img src={OpenAiLogo} className="h-6 ml-4 inline-block fill-white" alt="" />
             </a>

@@ -66,7 +66,7 @@ export default () => {
         <div className="grid grid-cols-4">
           <div className="col-span-3">
             <img src="./images/logo-from-dalle.png" className="h-12 max-sm:h-8 inline-block hover:scale-75 transition-transform" alt="" onClick={promptMe} />
-            <h1 className="text-2xl max-sm:text-xl font-bold inline-block ml-4">Arrr ...ummm... my ... GPT-3</h1>
+            <h1 className="text-2xl max-sm:text-lg font-bold inline-block ml-4">Arrr ...ummm... my ... GPT-3</h1>
           </div>
           <div className="col-span-1 flex items-center justify-end">
             <a target="_blank" className="hover:bg-black/25 active:bg-black/50 cursor-pointer p-2 rounded-md inline-block" href="https://github.com/antronic/chatbot-gpt-3-ui">
