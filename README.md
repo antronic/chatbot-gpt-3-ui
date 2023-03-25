@@ -23,4 +23,4 @@
 
 
 ## Sample architecture
-![Sample architecture](https://github.com/antronic/chatbot-gpt-3/blob/main/readme-assets/sample-architecture.png?raw=tru)
+![Sample architecture](https://raw.githubusercontent.com/antronic/chatbot-gpt-3-ui/main/readme-assets/sample-architecture.png)
