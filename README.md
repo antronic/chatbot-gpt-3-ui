@@ -2,7 +2,7 @@
 
 ## Requirements
 - Simple API server for connect with [Azure OpenAI - GPT-3](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/quickstart?tabs=command-line&pivots=programming-language-python) API
-  - You can alose use my custom-made API server [here](https://github.com/orapina/line-chatbot-openai-gpt-3-python)
+  - You can alose use my custom-made API server [here](https://github.com/antronic/line-chatbot-openai-gpt-3-python)
   - Azure subscription [Get free here](https://azure.microsoft.com/en-us/free/)
 
 
